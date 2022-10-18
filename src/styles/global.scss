@@ -1,6 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');html,
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+html,
 body {
     margin: 0;
     padding: 0;
- 
+}
+
+* {
+    font-family: "Open Sans", "sans-serif" !important;
+}
+
+.linear-background {
+    background-image: url("https://images4.alphacoders.com/114/1149587.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.922) 48%,
+        transparent 100%
+    );
+}
+
+.card-clip-path {
+    clip-path: polygon(90% 0, 100% 7%, 100% 100%, 0 100%, 0 0);
+    img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.1);
+        transition: inherit;
+    }
+    span {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 20px 20px;
+        color: rgba(255, 255, 255, 0.741);
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: bold;
+        transition: inherit;
+    }
+}
+
+.chroma-background {
+    background-image: url("https://44.media.tumblr.com/99ff85661896b84f087bd727b36299f6/e2c71a5edd5940d7-08/s640x960_f1/f5db4e56b8341855617ca02493a6ab45bb1d1801.gif");
+}
+.card-clip-path:hover {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    img {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    span {
+        padding: 20px 30px;
+        background-color: #6941c6;
+    }
 }

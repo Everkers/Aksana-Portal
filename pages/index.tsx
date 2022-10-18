@@ -7,15 +7,21 @@ import { Divider } from "@components/divider";
 import { FlatSelect } from "@components/flatSelect";
 import Layout from "@components/layout";
 import { Card } from "@components/card";
+import { GetServerSideProps } from "next";
+import { requireAuthentication } from "src/helpers/requireAuthentication";
+import { useQuery } from "react-query";
+import { getAccounts } from "src/api";
 
 const regions = ["euw", "eun", "na", "kr", "br"];
 const Home: React.FC = () => {
+    const { data } = useQuery("Accounts", getAccounts);
+    const accounts = data?.accounts;
     return (
         <Layout>
             <Container>
                 <div className="mt-10">
                     <Header
-                        title="Public Accounts"
+                        title="My Accounts"
                         subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
                 quod officia rerum exercitationem?"
                     />
@@ -90,9 +96,9 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-5 mt-10">
-                        {new Array(20).fill({}).map(() => {
-                            return <Card />;
-                        })}
+                        {accounts?.map((account: any) => (
+                            <Card account={account} />
+                        ))}
                     </div>
                 </div>
             </Container>
@@ -100,4 +106,12 @@ const Home: React.FC = () => {
     );
 };
 
+export const getServerSideProps: GetServerSideProps = requireAuthentication(
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    async (ctx) => {
+        return {
+            props: {},
+        };
+    },
+);
 export default Home;
