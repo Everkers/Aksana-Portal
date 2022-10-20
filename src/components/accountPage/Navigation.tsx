@@ -33,7 +33,7 @@ export const AccountNavigation = ({
                 </select>
             </div>
             <div className="hidden sm:block">
-                <div className="border-b border-[#252525]">
+                <div className="border-b flex border-[#252525]">
                     <nav className="-mb-px flex space-x-8" aria-label="Tabs">
                         {tabs.map((tab, i) => (
                             <button

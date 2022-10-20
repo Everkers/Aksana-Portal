@@ -1,24 +1,16 @@
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import {
-    BookmarkIcon,
-    FolderAddIcon,
-    HomeIcon,
-    MenuAlt2Icon,
-    XIcon,
-} from "@heroicons/react/outline";
-
-import { Navbar } from "..";
+import { ChevronLeftIcon } from "@heroicons/react/solid";
+import { Button, Container } from "@nextui-org/react";
 import clsx from "clsx";
-const navigation = [
-    { name: "Home", href: "#", icon: HomeIcon, current: true },
-    { name: "Bookmarks", href: "#", icon: BookmarkIcon, current: false },
-    { name: "My Collection", href: "#", icon: FolderAddIcon, current: false },
-];
+import Link from "next/link";
+import { Navbar } from "..";
 
-const Layout = ({ children }: { children: JSX.Element }) => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
+const Layout = ({
+    children,
+    navbar = true,
+}: {
+    children: JSX.Element;
+    navbar?: boolean;
+}) => {
     return (
         <>
             <div>
@@ -162,7 +154,12 @@ const Layout = ({ children }: { children: JSX.Element }) => {
                     </div>
                 </div> */}
                 <div className=" flex flex-col">
-                    <div className="sticky top-0 z-[999] flex-shrink-0 flex h-16 ">
+                    <div
+                        className={clsx(
+                            "top-0 z-[999] flex-shrink-0 flex h-16",
+                            navbar && "sticky",
+                        )}
+                    >
                         {/* <button
                             type="button"
                             className="px-4  text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden"
@@ -174,16 +171,44 @@ const Layout = ({ children }: { children: JSX.Element }) => {
                                 aria-hidden="true"
                             />
                         </button> */}
-                        <div className="flex-1  flex justify-between">
-                            <Navbar />
-                        </div>
+                        {navbar ? (
+                            <div className="flex-1  flex justify-between">
+                                <Navbar />
+                            </div>
+                        ) : (
+                            <div className="h-[90px] w-full">
+                                <Container className="h-full flex items-center">
+                                    <Link href={"/"}>
+                                        <a href={""}>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="icon icon-tabler icon-tabler-chevron-left"
+                                                width={40}
+                                                height={40}
+                                                viewBox="0 0 24 24"
+                                                stroke-width={2}
+                                                stroke="currentColor"
+                                                fill="none"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <path
+                                                    stroke="none"
+                                                    d="M0 0h24v24H0z"
+                                                    fill="none"
+                                                ></path>
+                                                <polyline points="15 6 9 12 15 18"></polyline>
+                                            </svg>
+                                        </a>
+                                    </Link>
+                                </Container>
+                            </div>
+                        )}
                     </div>
 
                     <main className="flex-1 relative">
                         <div className="py-6">
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-0">
-                                {children}
-                            </div>
+                            <div>{children}</div>
                         </div>
                     </main>
                 </div>

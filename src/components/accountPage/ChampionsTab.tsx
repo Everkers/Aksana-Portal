@@ -1,3 +1,4 @@
+import { DataHandler } from "@components/dataHandler/DataHandler";
 import { SearchIcon } from "@heroicons/react/solid";
 import { Input } from "@nextui-org/react";
 import { useMemo } from "react";
@@ -14,7 +15,6 @@ export const ChampionsTab = ({ account }: { account: any }) => {
                     .indexOf(searchKeyword.toLowerCase()) >= 0,
         );
     }, [account, searchKeyword]);
-    console.log(account);
     return (
         <div>
             <div className="mt-10 flex space-x-5">

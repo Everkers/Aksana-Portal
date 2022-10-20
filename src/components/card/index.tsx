@@ -11,8 +11,10 @@ import Link from "next/link";
 import { useMemo } from "react";
 
 export const Card = ({ account }: { account: any }) => {
+    const rankedBanner = useMemo(() => {
+        return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-${account.rankedStats.highestRankedEntrySR.tier.toLowerCase()}.png`;
+    }, [account]);
     const accountProperties = useMemo(() => {
-        console.log(account);
         const amountOfSkins = account.championsWithSkins.reduce(
             (a: any, b: any) => a + b.skins.length,
             0,
@@ -22,6 +24,7 @@ export const Card = ({ account }: { account: any }) => {
                 item.disenchantLootName === "CURRENCY_cosmetic" &&
                 item.displayCategories === "SKIN",
         );
+
         return [
             {
                 title: "champions",
@@ -62,10 +65,14 @@ export const Card = ({ account }: { account: any }) => {
                 <div className=" w-full relative flex">
                     <div className="flex items-center space-x-3">
                         <img
-                            className="w-16"
-                            src={
-                                "https://i.pinimg.com/originals/69/61/ab/6961ab1af799f02df28fa74278d78120.png"
-                            }
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null; // prevents looping
+                                currentTarget.className = "w-14";
+                                currentTarget.src =
+                                    "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/border-unranked.png";
+                            }}
+                            className="w-16 scale-[3.9] mt-4"
+                            src={rankedBanner}
                         />
                         <div className="">
                             <sub className="text-secondary">Rank</sub>

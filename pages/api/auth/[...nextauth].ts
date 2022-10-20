@@ -7,7 +7,7 @@ export const authOptions: NextAuthOptions = {
         jwt: async ({ account, token }) => {
             if (account) {
                 const { data } = await axios.post(
-                    `http://localhost:3001/api/auth/discord?token=${account?.access_token}`,
+                    `${process.env.NEXT_PUBLIC_API_URL}/auth/discord?token=${account?.access_token}`,
                 );
                 token = data;
             }

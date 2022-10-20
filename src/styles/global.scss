@@ -10,14 +10,14 @@ body {
 }
 
 .linear-background {
-    background-image: url("https://images4.alphacoders.com/114/1149587.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     background-attachment: fixed;
     position: relative;
     mask-image: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.922) 48%,
+        rgba(0, 0, 0, 0.922) 90%,
         transparent 100%
     );
 }

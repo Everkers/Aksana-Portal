@@ -1,20 +1,19 @@
 import React from "react";
 
-import { Container, Header } from "@components";
-import { Dropdown, Input } from "@nextui-org/react";
-import { SearchIcon } from "@heroicons/react/outline";
+import { Header } from "@components";
+
 import { Divider } from "@components/divider";
-import { FlatSelect } from "@components/flatSelect";
 import Layout from "@components/layout";
 import { Card } from "@components/card";
 import { GetServerSideProps } from "next";
 import { requireAuthentication } from "src/helpers/requireAuthentication";
 import { useQuery } from "react-query";
 import { getAccounts } from "src/api";
+import { DataHandler } from "@components/dataHandler/DataHandler";
+import { Container } from "@nextui-org/react";
 
-const regions = ["euw", "eun", "na", "kr", "br"];
 const Home: React.FC = () => {
-    const { data } = useQuery("Accounts", getAccounts);
+    const { data, ...queryResult } = useQuery("Accounts", getAccounts);
     const accounts = data?.accounts;
     return (
         <Layout>
@@ -25,7 +24,7 @@ const Home: React.FC = () => {
                         subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
                 quod officia rerum exercitationem?"
                     />
-                    <div className="flex space-x-5 mt-5">
+                    {/* <div className="flex space-x-5 mt-5">
                         <Input
                             bordered
                             borderWeight={"light"}
@@ -42,64 +41,18 @@ const Home: React.FC = () => {
                                 <SearchIcon className="w-5 h-5 text-secondary" />
                             }
                         />
-                    </div>
+                    </div> */}
                     <Divider />
-                    <div className="flex flex-wrap  gap-4">
-                        <div>
-                            <FlatSelect
-                                options={regions}
-                                title={"Select server"}
-                            />
+                    <DataHandler
+                        queryResult={{ ...queryResult, data }}
+                        data={data}
+                    >
+                        <div className="grid grid-cols-3 gap-10 mt-10">
+                            {accounts?.map((account: any) => (
+                                <Card account={account} />
+                            ))}
                         </div>
-                        {/* <div>
-                            <FlatSelect
-                                options={["+20", "+50", "+100"]}
-                                title={"NO. OF SKINS"}
-                            />
-                        </div> */}
-                        <div>
-                            <FlatSelect
-                                options={["+20", "+50", "+100"]}
-                                title={"NO. OF CHAMPIONS"}
-                            />{" "}
-                        </div>
-                        <div>
-                            <FlatSelect
-                                options={["+20", "+50", "+100"]}
-                                title={"SORT BY"}
-                            >
-                                <Dropdown>
-                                    <Dropdown.Button
-                                        style={{
-                                            height: 46,
-                                            minWidth: 55,
-                                            border: "solid 1px white",
-                                            textTransform: "uppercase",
-                                        }}
-                                        light
-                                    >
-                                        RANK
-                                    </Dropdown.Button>
-                                    <Dropdown.Menu aria-label="Actions">
-                                        <Dropdown.Item key="rank">
-                                            RANK
-                                        </Dropdown.Item>
-                                        <Dropdown.Item key="skins">
-                                            Number of skins
-                                        </Dropdown.Item>
-                                        <Dropdown.Item key="champions">
-                                            Number of champions
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </FlatSelect>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-5 mt-10">
-                        {accounts?.map((account: any) => (
-                            <Card account={account} />
-                        ))}
-                    </div>
+                    </DataHandler>
                 </div>
             </Container>
         </Layout>
