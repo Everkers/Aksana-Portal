@@ -24,7 +24,7 @@ export const Lootskins = ({ account }: { account: any }) => {
                 />
             </div> */}
             <Alert message="Currently we only display the skin loot because it's the most important, let us know if you wanna see more!" />
-            <div className="grid grid-cols-4 gap-5 gap-y-10 mt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gap-y-10 mt-10">
                 {skins?.map((skin: any) => {
                     const championId = skin.splashPath.split("/").slice(-2)[0];
                     return (

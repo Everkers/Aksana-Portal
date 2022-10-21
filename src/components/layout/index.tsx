@@ -156,7 +156,7 @@ const Layout = ({
                 <div className=" flex flex-col">
                     <div
                         className={clsx(
-                            "top-0 z-[999] flex-shrink-0 flex h-16",
+                            "top-0 z-[90] flex-shrink-0 flex h-16",
                             navbar && "sticky",
                         )}
                     >

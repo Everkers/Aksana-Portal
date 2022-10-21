@@ -27,7 +27,7 @@ export const ChampionAndSkinCard = ({
     return (
         <div
             className={clsx(
-                "w-[250px] border border-gray-700 h-[350px] relative rounded-md transition-all cursor-pointer duration-300 overflow-hidden card-clip-path ",
+                "md:w-[250px] w-[170px] h-[290px] border border-gray-700 md:h-[350px] relative rounded-md transition-all cursor-pointer duration-300 overflow-hidden card-clip-path ",
                 chroma && "chroma-background",
             )}
         >

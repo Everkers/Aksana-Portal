@@ -14,6 +14,14 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>{CssBaseline.flush()}</Head>
+                <link rel="shortcut icon" href="favicon.ico" />
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="apple-icon-180x180.png"
+                />
+                <link rel="icon" href="favicon.ico" />
+                <title>Aksana • League Of Legends</title>
                 <body>
                     <Main />
                     <NextScript />

@@ -21,8 +21,7 @@ const Home: React.FC = () => {
                 <div className="mt-10">
                     <Header
                         title="My Accounts"
-                        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-                quod officia rerum exercitationem?"
+                        subtitle="All your league of legends accounts will appear bellow"
                     />
                     {/* <div className="flex space-x-5 mt-5">
                         <Input
@@ -47,7 +46,7 @@ const Home: React.FC = () => {
                         queryResult={{ ...queryResult, data }}
                         data={data}
                     >
-                        <div className="grid grid-cols-3 gap-10 mt-10">
+                        <div className="grid md:grid-cols-3 gap-10 mt-10">
                             {accounts?.map((account: any) => (
                                 <Card account={account} />
                             ))}

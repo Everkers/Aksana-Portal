@@ -29,7 +29,7 @@ export const ChampionsTab = ({ account }: { account: any }) => {
                     }
                 />
             </div>
-            <div className="grid grid-cols-4 gap-5 gap-y-10 mt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gap-y-10 mt-10">
                 {champions?.map((champion: any) => (
                     <ChampionAndSkinCard data={champion} key={champion.id} />
                 ))}

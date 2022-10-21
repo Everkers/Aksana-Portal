@@ -119,10 +119,10 @@ const AccountPage = ({ mode }: { mode: "view" | "normal" }) => {
                                     : "https://images4.alphacoders.com/114/1149587.jpg"
                             })`,
                         }}
-                        className="w-full linear-background h-[280px]"
+                        className="w-full md:block flex items-center linear-background md:h-[280px] min-h-[380px]"
                     >
                         <Container className="flex relative  h-full">
-                            <div className="flex !mr-auto -mt-10 items-center space-x-5">
+                            <div className="flex !mr-auto mb-4 md:mb-0 md:-mt-10 items-center space-x-5">
                                 <Badge
                                     content={account?.profile?.summonerLevel}
                                     color={"primary"}

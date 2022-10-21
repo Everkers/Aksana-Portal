@@ -7,8 +7,8 @@ const LoginPage = () => {
     };
     return (
         <div className="min-h-screen bg-background flex items-center justify-center w-full">
-            <div className="min-h-[400px] flex flex-col items-center justify-center w-1/3 bg-cardColor rounded-lg shadow-md">
-                <div className="items-center flex-col flex mb-4">
+            <div className="min-h-[400px] flex flex-col items-center justify-center w-4/5 md:w-1/3 bg-cardColor rounded-lg shadow-md">
+                <div className="items-center flex-col flex mb-4 px-3">
                     <img
                         alt={"discord-logo"}
                         src={DiscordLogo.src}

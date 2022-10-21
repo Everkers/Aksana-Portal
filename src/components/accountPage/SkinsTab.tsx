@@ -71,7 +71,7 @@ export const SkinsTab = ({ account }: { account: any }) => {
                 </Dropdown>
             </div>
             {sortType === "all" && (
-                <div className="grid grid-cols-4 gap-5 gap-y-10 mt-10">
+                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gap-y-10 mt-10">
                     {filteredData?.map((skin: any) => (
                         <ChampionAndSkinCard
                             skin={true}
@@ -94,7 +94,7 @@ export const SkinsTab = ({ account }: { account: any }) => {
                                         {champion.title}
                                     </span>
                                 </figure>
-                                <div className="grid grid-cols-4 gap-5 gap-y-10 mt-10">
+                                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gap-y-10 mt-10">
                                     {champion.skins.map(
                                         (skin: any, i: number) => (
                                             <ChampionAndSkinCard
