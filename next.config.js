@@ -3,6 +3,7 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
+    optimizeFonts: false,
 };
 
 module.exports = withPlugins([nextConfig], {});
