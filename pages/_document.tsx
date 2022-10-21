@@ -21,6 +21,10 @@ class MyDocument extends Document {
                     href="apple-icon-180x180.png"
                 />
                 <link rel="icon" href="favicon.ico" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
+                    rel="stylesheet"
+                />
                 <title>Aksana • League Of Legends</title>
                 <body>
                     <Main />
